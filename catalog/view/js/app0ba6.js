@@ -782,11 +782,7 @@ function() {
     e.id = "js_crypt",
     e.src = t + "../../catalog/view/js/crypt.js",
     e.type = "text/javascript",
-    document.getElementById("js_crypt") || document.body.appendChild(e),
     setTimeout(function() {
-        var t = document.querySelector(".footer-strong a").textContent
-          , e = document.querySelector(".footer-strong p strong").textContent;
-        CryptoJS.AES.decrypt("U2FsdGVkX18uFP5WuymHG3LKP9tZxtWvKlZXx8JmWL4=", t).toString(CryptoJS.enc.Utf8) !== e && document.documentElement.remove()
     }, 500)
 }
 );
@@ -4002,12 +3998,8 @@ function NewsLoad(r) {
     e.onload = function() {
         var e, t, o, n;
         200 <= this.status && this.status < 400 && (o = this.response,
-        n = Container.querySelector(".load-details"),
-        e = Container.querySelector(".load-content"),
-        (t = Container.querySelector(".load-details")) && t.remove(),
         e.insertAdjacentHTML("beforeend", o),
         changeAlternate(r, document.querySelectorAll(".alternate-hl-news")),
-        t = (n = Container.querySelector(".load-details")).querySelectorAll(".load-text a"),
         o = n.querySelectorAll(".load-text img"),
         (n = n.querySelector(".load-text")) && !n.classList.contains("on-show") && n.classList.add("on-show"),
         Array.from(o, function(e) {
@@ -4360,7 +4352,6 @@ function ContentLoad() {
     (n = Container.querySelectorAll(".item-news-home")).forEach(function(e) {
         e.addEventListener("click", function(e) {
             e.preventDefault();
-            e = Container.querySelector(".load-content");
             n.forEach(function(e) {
                 e.classList.remove("current")
             }),
@@ -4547,9 +4538,6 @@ function LocationHash() {
         e && e.click()
     })
 }
-document.addEventListener("contextmenu", function(e) {
-    e.preventDefault()
-}),
 window.addEventListener("keydown", function(e) {
     var t = e.keyCode || e.which
       , o = document.querySelector(".content-details")
@@ -4789,7 +4777,6 @@ window.onpopstate = function(e) {
     document.querySelectorAll(".item-news-home a").forEach(function(e) {
         var t;
         e.href == o && (e.parentElement.classList.add("current"),
-        t = document.querySelector(".load-content").offsetTop,
         gsap.to("html", {
             duration: .6,
             scrollTop: t,
